@@ -12,7 +12,7 @@ choice( choices: 'create\ndelete' , description: 'name of the student', name: 'm
         
         stage('Git Checkout'){
             when {
-             expression { params.choices == 'create' }
+             expression { params.choices == 'create\ndelete' }
         }
             
             steps{
@@ -25,15 +25,9 @@ choice( choices: 'create\ndelete' , description: 'name of the student', name: 'm
         }
         stage('UNIT testing'){
             when {
-             expression { params.choices == 'create' }
+             expression { params.choices == 'create\ndelete' }
         }
-            
-            steps{
-                  when {
-             expression { params.choices == 'create' }
-        }
-           
-                
+               
                 script{
                     
                     sh 'mvn test'
@@ -42,7 +36,7 @@ choice( choices: 'create\ndelete' , description: 'name of the student', name: 'm
         }
         stage('Integration testing'){
                when {
-             expression { params.choices == 'create' }
+             expression { params.choices == 'create\ndelete' }
         }
             steps{
                 
@@ -54,7 +48,7 @@ choice( choices: 'create\ndelete' , description: 'name of the student', name: 'm
         }
         stage('Maven build'){
                 when {
-             expression { params.choices == 'create' }
+             expression { params.choices == 'create\ndelete' }
         }
             
             steps{
