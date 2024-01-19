@@ -2,13 +2,9 @@ pipeline{
     agent any 
  parameters {
 choice( choices: 'create\ndelete' , description: 'name of the student', name: 'maven' )
- }
-    
+ }  
  stages {  
         stage('Git Checkout'){
-            when {
-             expression { params.choices == 'create' }
-        }
             steps{
                 script{
                     git branch: 'main', url: 'https://github.com/boorlaarun/demo-counter-app.git'
@@ -16,20 +12,13 @@ choice( choices: 'create\ndelete' , description: 'name of the student', name: 'm
             }
         }
         stage('UNIT testing'){
-            when {
-             expression { params.choices == 'create' }
-        }
                steps{
-                script{
-                    
+                script{                    
                     sh 'mvn test'
                 }
             }
         }
         stage('Integration testing'){
-               when {
-             expression { params.choices == 'create' }
-        }
             steps{
                 
                 script{
@@ -39,14 +28,8 @@ choice( choices: 'create\ndelete' , description: 'name of the student', name: 'm
             }
         }
         stage('Maven build'){
-                when {
-             expression { params.choices == 'create' }
-        }
-            
             steps{
-                
-                script{
-                    
+                script{ 
                     sh 'mvn clean install'
                 }
             }
