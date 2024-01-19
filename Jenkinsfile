@@ -9,7 +9,11 @@ choice( choices: 'create\ndelete' , description: 'name of the student', name: 'm
     
     stages {
         
+        
         stage('Git Checkout'){
+            when {
+             expression { params.choices == 'create\ndelete' }
+        }
             
             steps{
                 
@@ -20,6 +24,9 @@ choice( choices: 'create\ndelete' , description: 'name of the student', name: 'm
             }
         }
         stage('UNIT testing'){
+            when {
+             expression { params.choices == 'delete' }
+        }
             
             steps{
                 
