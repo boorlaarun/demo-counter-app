@@ -1,9 +1,7 @@
-@Library('arun') _
+@Library('arun@main') _
 pipeline{
     agent any 
- parameters {
-choice( choices: 'create\ndelete' , description: 'name of the student', name: 'maven' )
- }  
+
  stages {  
         stage('Git Checkout'){
             steps{
