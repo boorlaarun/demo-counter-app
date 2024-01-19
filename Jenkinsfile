@@ -2,7 +2,7 @@ pipeline{
     agent any 
  parameters {
 choice( choices: 'create\ndelete' , description: 'name of the student', name: 'maven' )
-         }
+ }
     
  stages {  
         stage('Git Checkout'){
@@ -19,7 +19,7 @@ choice( choices: 'create\ndelete' , description: 'name of the student', name: 'm
             when {
              expression { params.choices == 'create' }
         }
-               
+               steps{
                 script{
                     
                     sh 'mvn test'
@@ -50,7 +50,6 @@ choice( choices: 'create\ndelete' , description: 'name of the student', name: 'm
                     sh 'mvn clean install'
                 }
             }
-        }
-        
+        }  
     }        
 }  
