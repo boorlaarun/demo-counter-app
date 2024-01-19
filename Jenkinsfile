@@ -3,7 +3,7 @@ pipeline{
     agent any 
 
     parameters {
-choice( choices: 'create\ndelete' , defaultvalue: 'arun created & deleted', name: 'maven' )
+choice( choices: 'create\ndelete' , description: 'name of the student', name: 'maven' )
         
     }
     
