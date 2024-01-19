@@ -1,6 +1,11 @@
 pipeline{
     
     agent any 
+
+    parameters {
+choice ( choices: 'create\ndelete' , defaultvalue: 'arun created & deleted', name: 'maven' )
+        
+    }
     
     stages {
         
