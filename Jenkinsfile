@@ -9,7 +9,7 @@ choice( choices: 'create\ndelete' , description: 'name of the student', name: 'm
             steps{
                 script{
                     gitchckout(
-                        branch: "main"
+                        branch: "main",
                         url: "https://github.com/boorlaarun/demo-counter-app.git"                      
                     )
                     
