@@ -12,7 +12,7 @@ choice( choices: 'create\ndelete' , description: 'name of the student', name: 'm
         
         stage('Git Checkout'){
             when {
-             expression { params.choices == 'create\ndelete' }
+             expression { params.choices == 'create' }
         }
             
             steps{
@@ -30,7 +30,7 @@ choice( choices: 'create\ndelete' , description: 'name of the student', name: 'm
             
             steps{
                   when {
-             expression { params.choices == 'create\ndelete' }
+             expression { params.choices == 'create' }
         }
            
                 
@@ -42,7 +42,7 @@ choice( choices: 'create\ndelete' , description: 'name of the student', name: 'm
         }
         stage('Integration testing'){
                when {
-             expression { params.choices == 'create\ndelete' }
+             expression { params.choices == 'create' }
         }
             steps{
                 
