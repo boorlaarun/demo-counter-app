@@ -3,7 +3,7 @@ pipeline{
     agent any 
 
     parameters {
-choice( choices: 'create\ndelete' , description: 'name of the student', name: 'maven' )
+choice( choices: 'create\ndelete\nhold' , description: 'name of the student', name: 'maven' )
         
     }
     
@@ -12,7 +12,7 @@ choice( choices: 'create\ndelete' , description: 'name of the student', name: 'm
         
         stage('Git Checkout'){
             when {
-             expression { params.choices == 'create\ndelete' }
+             expression { params.choices == 'create\ndelete\nhold' }
         }
             
             steps{
@@ -25,10 +25,14 @@ choice( choices: 'create\ndelete' , description: 'name of the student', name: 'm
         }
         stage('UNIT testing'){
             when {
-             expression { params.choices == 'delete' }
+             expression { params.choices == 'hold' }
         }
             
             steps{
+                  when {
+             expression { params.choices == 'create\ndelete\nhold' }
+        }
+           
                 
                 script{
                     
@@ -37,7 +41,9 @@ choice( choices: 'create\ndelete' , description: 'name of the student', name: 'm
             }
         }
         stage('Integration testing'){
-            
+               when {
+             expression { params.choices == 'create\ndelete\nhold' }
+        }
             steps{
                 
                 script{
@@ -47,6 +53,9 @@ choice( choices: 'create\ndelete' , description: 'name of the student', name: 'm
             }
         }
         stage('Maven build'){
+                when {
+             expression { params.choices == 'hold' }
+        }
             
             steps{
                 
