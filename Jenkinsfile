@@ -23,7 +23,7 @@ stage('Git clean'){
             steps{
                 script{
                   sh "cd /var/lib/jenkins/workspace/sai/target/ "
-                   sh " rm .jar* "
+                   sh " rm  *.jar"
                 }
             }
         }
