@@ -34,7 +34,7 @@ stage('Git DOCKER'){
             steps{
                 script{
                   sh "cd /var/lib/jenkins/workspace/sai/ "
-                   sh " Docker build --name arun . "
+                   sh " docker build --name arun . "
                 }
             }
         }
