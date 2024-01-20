@@ -19,14 +19,6 @@ stage('Git clean'){
             }
         }
 
-        stage('Git jar remove'){
-            steps{
-                script{
-                  sh "cd /var/lib/jenkins/workspace/sai/target/ "
-                   sh " rm  *.jar"
-                }
-            }
-        }
 stage('Git build'){
             steps{
                       sh 'mvn -B clean package'
