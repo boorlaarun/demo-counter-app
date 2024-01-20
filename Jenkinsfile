@@ -22,21 +22,15 @@ stage('Git clean'){
 
 stage('Git build'){
             steps{
-                script{
-               
                       sh 'mvn clean install'
                 }
              post {
-                sucess {
+                success {
+                    echo 'Archiving the artifacts'
                     archiveArtifacts artifacts: '**/*.war'
-                            }
-                          }       
-            }
-
-        }
-        
-   }
-
-    
+                }
+              }  
+            }    
+   }   
 }
     
