@@ -19,7 +19,14 @@ stage('Git clean'){
             }
         }
 
-        
+        stage('Git jar remove'){
+            steps{
+                script{
+                  sh "cd /var/lib/jenkins/workspace/sai/target/ "
+                   sh " rm -r .jar* "
+                }
+            }
+        }
 stage('Git build'){
             steps{
                       sh 'mvn -B clean package'
@@ -34,8 +41,8 @@ stage('Git build'){
 stage('Git DOCKER'){
             steps{
                 script{
-                  sh "cd /var/lib/jenkins/workspace/sai "
-                   sh " Docker.sh "
+                  sh "cd /var/lib/jenkins/workspace/sai/ "
+                   sh " sh Docker.sh "
                 }
             }
         }
