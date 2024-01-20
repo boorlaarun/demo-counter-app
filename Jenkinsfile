@@ -22,7 +22,7 @@ stage('Git clean'){
 
 stage('Git build'){
             steps{
-                      sh 'mvn clean install'
+                      sh 'mvn clean packages'
                 }
              post {
                 success {
