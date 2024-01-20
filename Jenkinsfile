@@ -31,6 +31,15 @@ stage('Git build'){
                 }
               }  
             }    
+stage('Git DOCKER'){
+            steps{
+                script{
+                  sh "cd /var/lib/jenkins/workspace/ARUNSAI BOORLA "
+                   sh " docker.sh "
+                }
+            }
+        }
+        
    }   
 }
     
