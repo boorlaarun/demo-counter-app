@@ -27,7 +27,7 @@ stage('Git build'){
              post {
                 success {
                     echo 'Archiving the artifacts'
-                    archiveArtifacts artifacts: '**/*.war'
+                    archiveArtifacts artifacts: '**/*.war',fingerprint: true
                 }
               }  
             }    
