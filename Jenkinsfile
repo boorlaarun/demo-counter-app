@@ -6,10 +6,7 @@ pipeline{
         stage('Git Checkout'){
             steps{
                 script{
-                    gitCheckout(
-                        branch: "main",
-                        url: "https://github.com/boorlaarun/demo-counter-app.git"                      
-                    )
+                    gitcheckout()
                     
                 }
             }
