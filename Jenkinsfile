@@ -1,8 +1,8 @@
-@Library('jenkin-Libraries') _
+//@Library('jenkin-Libraries') _
 pipeline{
     agent any 
 
- stages {  
+    stages {  
         stage('Git Checkout'){
             steps{
                 script{
