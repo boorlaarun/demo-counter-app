@@ -22,12 +22,12 @@ stage('Git clean'){
 
 stage('Git build'){
             steps{
-                      sh 'mvn clean package'
+                      sh 'mvn -B clean package'
                 }
              post {
                 success {
                     echo 'Archiving the artifacts'
-                    archiveArtifacts artifacts: '**/*.war',fingerprint: true
+                    archiveArtifacts artifacts: '**/*',fingerprint: true
                 }
               }  
             }    
