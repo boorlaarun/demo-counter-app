@@ -7,9 +7,12 @@ pipeline {
             }
         }
           stage('Analyze') {
-    		steps {
-    			withSonarQubeEnv(credentialsId: 'sonar') {
-}
+		  environment {
+        SONAR_URL = "http://13.235.45.246/:9000"
+           }
+                   steps {
+    			withCredentials([usernameColonPassword(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]) {
+                }
     		}
 		}
     
