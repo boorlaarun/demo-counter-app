@@ -1,44 +1,31 @@
-
-pipeline{
-    agent any 
-
-    stages {  
-        stage('Git Checkout'){
-            steps{
-                script{
-                    git branch: 'main', url: 'https://github.com/boorlaarun/demo-counter-app.git'
-                    
-                }
+pipeline {
+   agent any
+    stages {
+    	stage('Clean') {
+            steps {
+                sh 'mvn clean'
             }
         }
-stage('Git clean'){
-            steps{
-                script{
-                     sh 'mvn test'
-                }
+        stage('Test') {
+            steps {
+                 sh 'mvn test'
             }
         }
-
-stage('Git build'){
-            steps{
-                      sh 'mvn -B clean package'
-                }
-             post {
-                success {
-                    echo 'Archiving the artifacts'
-                    archiveArtifacts artifacts: '**/*',fingerprint: true
-                }
-              }  
-            }    
-stage('Git DOCKER'){
-            steps{
-                script{
-                  sh "cd /var/lib/jenkins/workspace/sai/ "
-                   sh " docker build . "
-                }
-            }
-        }
-        
-   }   
-}
+          stage('Analyze') {
+    		steps {
+    			script {
+             		scannerHome = tool 'sonarQube';
+        		}
+     			withSonarQubeEnv('SonarQube') {
+        			 sh 'mvn clean verify sonar:sonar'
+    			}
+    		}
+		}
     
+		stage('Build') {
+            steps {
+                sh 'mvn -B clean package'
+            }
+        }
+
+    }
