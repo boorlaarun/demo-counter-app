@@ -31,7 +31,7 @@ pipeline {
                 sh 'mvn -B clean package'
             }
         }
-	    stage('Build') {
+	    stage('docker_image') {
 		     environment {
 			docker_image = "arundocker11/springboot:${BUILD_NUMBER}"
 		}
