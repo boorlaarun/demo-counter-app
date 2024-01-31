@@ -1,8 +1,5 @@
-FROM tomcat:8.5
-
-#COPY
-COPY ./var/lib/jenkins/workspace/sai/*.jar /usr/local/tomcat/webapps/
-
-WORKDIR /usr/local/tomcat/webapps/
-
-CMD ["catalina.sh", "run"]
+FROM openjdk:8-jre
+WORKDIR /opt/app
+ARG jar_file=/target/springboot-{}.jar
+COPY ${jar_file} /opt/app/app.jar
+CMD ["java", "-jar", "app.jar"]
