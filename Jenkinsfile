@@ -36,11 +36,10 @@ pipeline {
 			docker_image = "arundocker11/springboot:${BUILD_NUMBER}"
 	
 		}
-            steps {
-		    script{
-			    sh "cd /var/lib/jenkins/workspace/maven-pipeline/" && docker built -t ${BUILD_NUMBER} .
-		    }
-               
+              steps {
+		
+	    sh "cd /var/lib/jenkins/workspace/maven-pipeline/" && docker built -t ${BUILD_NUMBER} .
+	 
             }
         }
     }
