@@ -16,7 +16,7 @@ pipeline {
         SONAR_URL = "http://13.235.45.246:9000"
            }
                    steps {
-    			withCredentials([usernameColonPassword(credentialsId: 'SonarQube', variable: 'SonarQube')]) {
+    			withCredentials([usernameColonPassword(credentialsId: 'sonarqube', variable: 'SonarQube')]) {
                 }
     		}
 		}
