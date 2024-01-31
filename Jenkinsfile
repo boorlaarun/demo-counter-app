@@ -37,7 +37,7 @@ pipeline {
 		}
               steps {
 		script {
-	    sh 'cd /var/lib/jenkins/workspace/maven-pipeline/" && docker built -t ${BUILD_NUMBER} . '
+	    sh 'cd /var/lib/jenkins/workspace/maven-pipeline/ && docker built -t ${BUILD_NUMBER} . '
 		}
             }
         }
