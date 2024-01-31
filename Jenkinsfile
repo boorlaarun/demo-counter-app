@@ -34,11 +34,12 @@ pipeline {
 	    stage('docker_image') {
 		     environment {
 			docker_image = "arundocker11/springboot:${BUILD_NUMBER}"
+			  version = "latest"   
 		}
               steps {
 		script {
 	    sh 'cd /var/lib/jenkins/workspace/maven-pipeline/'
-	    sh ' docker built -t ${docker_image} . '
+	    sh ' docker built -t ${docker_image}:${version} . '
 		}
             }
         }
