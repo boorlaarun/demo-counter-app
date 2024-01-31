@@ -31,5 +31,17 @@ pipeline {
                 sh 'mvn -B clean package'
             }
         }
+	    stage('Build') {
+		     environment {
+			docker_image = "arundocker11/springboot:${BUILD_NUMBER}"
+	
+		}
+            steps {
+		    script{
+			    sh "cd /var/lib/jenkins/workspace/maven-pipeline/" && docker built -t ${BUILD_NUMBER} .
+		    }
+               
+            }
+        }
     }
   }
