@@ -34,7 +34,6 @@ pipeline {
 	    stage('Build') {
 		     environment {
 			docker_image = "arundocker11/springboot:${BUILD_NUMBER}"
-	
 		}
               steps {
 		script {
