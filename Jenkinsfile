@@ -24,11 +24,11 @@ pipeline {
 		stage('inter_dockerhub') {
             steps {
 		    script {
-			sh 'cd /var/lib/jenkins/workspace/maven-pipeline/ '    
+			//sh 'cd /var/lib/jenkins/workspace/maven-pipeline/ '    
 	  // def dockerImage = docker.image("${DOCKER_IMAGE}")  
 			// This step should not normally be used in your script. Consult the inline help for details.
 withDockerRegistry(credentialsId: 'arundocker11', url: 'https://index.docker.io/v1/') 
-               sh ' docker push $DOCKER_IMAGE '
+               //sh ' docker push $DOCKER_IMAGE '
                        
 		    }
             }
