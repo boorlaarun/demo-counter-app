@@ -20,6 +20,7 @@ pipeline {
 	    sh 'cd /var/lib/jenkins/workspace/maven-pipeline/ && docker build -t ${DOCKER_IMAGE} .'	
 		}
             }
+	    }
 		stage('inter_dockerhub') {
             steps {
 		    script {
