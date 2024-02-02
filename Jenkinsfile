@@ -27,7 +27,7 @@ pipeline {
 			// This step should not normally be used in your script. Consult the inline help for details.
 withDockerRegistry(credentialsId: 'arundocker11', url: 'https://index.docker.io/v1/') {
                 dockerImage.push()
-            }
+                       }
 		    }
             }
         }    
