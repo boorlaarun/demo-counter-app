@@ -1,5 +1,7 @@
 FROM openjdk:8-jre
+ARG artifact=target/spring-boot-web.jar
+
 WORKDIR /opt/app
 
-COPY /var/lib/jenkins/workspace/maven-pipeline/target/springboot-1.0.1.jar /opt/app/app.jar
+COPY ${artifact} app.jar
 CMD ["java", "-jar", "app.jar"]
