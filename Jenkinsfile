@@ -31,7 +31,7 @@ withDockerRegistry( 'https://index.docker.io/v1/',"arundocker11")
                //sh ' docker push $DOCKER_IMAGE '
                        
 		    }
-        
+	    }
         }    
     }
   }
