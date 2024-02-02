@@ -13,14 +13,20 @@ pipeline {
         }
 	    stage('docker_image') {
 		     environment {
-			  DOCKER_IMAGE = "abhishekf5/ultimate-cicd:${BUILD_NUMBER}"
+             DOCKER_IMAGE = "arundocker11/spring:${BUILD_NUMBER}"
 		}
               steps {
 		script {
-	    sh 'cd /var/lib/jenkins/workspace/maven-pipeline/ && docker build -t ${DOCKER_IMAGE} .'
-	   
+	    sh 'cd /var/lib/jenkins/workspace/maven-pipeline/ && docker build -t ${DOCKER_IMAGE} .'	
 		}
             }
-        }
+		stage('inter_dockerhub') {
+            steps {
+	   def dockerImage = docker.image("${DOCKER_IMAGE}")  
+			// This step should not normally be used in your script. Consult the inline help for details.
+withDockerRegistry(credentialsId: 'arundocker11', url: 'https://index.docker.io/v1/') 
+		   dockerImage.push()  
+            }
+        }    
     }
   }
